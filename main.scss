@@ -1,0 +1,79 @@
+//Variables
+
+$base-color: #c4c4c4;
+
+//Global styles
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+body {
+  background: $base-color;
+}
+.main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+  position: relative;
+  padding: 2rem;
+
+  &__popup {
+    height: 100%;
+    width: 100%;
+    background: #000000b5;
+    position: fixed;
+    z-index: 1;
+
+    &__arrow {
+      &--left {
+        z-index: 3;
+        position: fixed;
+        top: 50%;
+        left: 10%;
+        transition: all 0.2s;
+        cursor: pointer;
+        padding: 1.6rem;
+      }
+      &--left:hover,
+      &--right:hover {
+        background: #000000b5;
+      }
+
+      &--right {
+        cursor: pointer;
+        z-index: 3;
+        position: fixed;
+        top: 50%;
+        right: 10%;
+        transition: all 0.2s;
+        padding: 1.6rem;
+      }
+    }
+  }
+  &__img {
+    width: 100%;
+    cursor: pointer;
+    object-fit: cover;
+
+    &__popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 80%;
+      width: 80%;
+      object-fit: cover;
+      z-index: 2;
+    }
+  }
+  &__img:hover {
+    filter: blur(0.5rem);
+  }
+}

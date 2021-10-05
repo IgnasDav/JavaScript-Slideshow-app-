@@ -1,0 +1,88 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  background: #c4c4c4;
+}
+
+.main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(500px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+  position: relative;
+  padding: 2rem;
+}
+
+.main__popup {
+  height: 100%;
+  width: 100%;
+  background: #000000b5;
+  position: fixed;
+  z-index: 1;
+}
+
+.main__popup__arrow--left {
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 10%;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  cursor: pointer;
+  padding: 1.6rem;
+}
+
+.main__popup__arrow--left:hover, .main__popup__arrow--right:hover {
+  background: #000000b5;
+}
+
+.main__popup__arrow--right {
+  cursor: pointer;
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  right: 10%;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  padding: 1.6rem;
+}
+
+.main__img {
+  width: 100%;
+  cursor: pointer;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.main__img__popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 80%;
+  width: 80%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 2;
+}
+
+.main__img:hover {
+  -webkit-filter: blur(0.5rem);
+          filter: blur(0.5rem);
+}
+/*# sourceMappingURL=main.css.map */
