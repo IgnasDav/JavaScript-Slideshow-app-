@@ -4,12 +4,14 @@
 
 const main = document.querySelector(".main");
 let img;
+let photoIndex = -1;
 const photoPopup = document.createElement("div");
 const imgNew = document.createElement("img");
 const imgClass = document.createElement("div");
 const rightArrow = document.createElement("img");
 const leftArrow = document.createElement("img");
 const body = document.querySelector("body");
+
 //Adding classes
 rightArrow.classList.add("main__popup__arrow--right");
 leftArrow.classList.add("main__popup__arrow--left");
@@ -62,59 +64,122 @@ const photoArr = [
 
 // const photoArrCopy = [...photoArr];
 
-photoArr.forEach((singlePhoto) => {
+//Global functions
+
+function swipeRight() {
+  photoIndex++;
+  if (photoIndex === 0) {
+    imgNew.src = photoArr[0].src;
+  }
+  if (photoIndex === 1) {
+    imgNew.src = photoArr[1].src;
+  }
+  if (photoIndex === 2) {
+    imgNew.src = photoArr[2].src;
+  }
+  if (photoIndex === 3) {
+    imgNew.src = photoArr[3].src;
+  }
+  if (photoIndex === 4) {
+    imgNew.src = photoArr[4].src;
+  }
+  if (photoIndex === 5) {
+    imgNew.src = photoArr[5].src;
+  }
+  if (photoIndex === 6) {
+    imgNew.src = photoArr[6].src;
+  }
+  if (photoIndex === 7) {
+    imgNew.src = photoArr[7].src;
+  }
+  if (photoIndex === 8) {
+    imgNew.src = photoArr[8].src;
+  }
+  if (photoIndex === 9) {
+    photoIndex = 0;
+    imgNew.src = photoArr[0].src;
+  }
+}
+function swipeLeft() {
+  photoIndex--;
+  if (photoIndex === 0) {
+    imgNew.src = photoArr[0].src;
+  }
+  if (photoIndex === 1) {
+    imgNew.src = photoArr[1].src;
+  }
+  if (photoIndex === 2) {
+    imgNew.src = photoArr[2].src;
+  }
+  if (photoIndex === 3) {
+    imgNew.src = photoArr[3].src;
+  }
+  if (photoIndex === 4) {
+    imgNew.src = photoArr[4].src;
+  }
+  if (photoIndex === 5) {
+    imgNew.src = photoArr[5].src;
+  }
+  if (photoIndex === 6) {
+    imgNew.src = photoArr[6].src;
+  }
+  if (photoIndex === 7) {
+    imgNew.src = photoArr[7].src;
+  }
+  if (photoIndex === 8) {
+    imgNew.src = photoArr[8].src;
+  }
+  if (photoIndex === -1) {
+    photoIndex = 8;
+    imgNew.src = photoArr[8].src;
+  }
+}
+function remove() {
+  rightArrow.remove();
+  leftArrow.remove();
+  photoPopup.remove();
+  imgNew.remove();
+}
+photoArr.forEach((singlePhoto, i) => {
   img = document.createElement("img");
   img.classList.add("main__img");
   img.alt = singlePhoto.alt;
   img.src = singlePhoto.src;
-  img.append(singlePhoto.src);
   main.append(img);
-
-  img.addEventListener("click", (event) => {
-    // body.prepend(photoPopup);
-    // imgNew.src = singlePhoto.src;
-    // imgNew.alt = singlePhoto.alt;
-    // body.append(imgClass);
-    // //Save the index of the currently pressed photo and then add ++ the index, event.target.src may be used
-    // imgClass.innerHTML = null;
-    // imgClass.append(imgNew);
-    // imgClass.prepend(leftArrow, rightArrow);
-
-    photoArr.forEach((singlePhoto, i) => {
-      singlePhoto["index"] = i;
-      if (singlePhoto.index === 0) {
-        singlePhoto.index++;
-        body.prepend(photoPopup);
-        imgNew.src = singlePhoto.src;
-        imgNew.alt = singlePhoto.alt;
-        body.append(imgClass);
-        //Save the index of the currently pressed photo and then add ++ the index, event.target.src may be used
-        imgClass.innerHTML = null;
-        imgClass.append(imgNew);
-        imgClass.prepend(leftArrow, rightArrow);
-      }
-      console.log(singlePhoto);
-    });
-
-    rightArrow.addEventListener("click", (event) => {
-      if (singlePhoto.index === 0) {
-      }
-      // photoArr.forEach((singlePhoto, i) => {
-      //   imgNew.innerHTML = null;
-      //   imgNew.src = singlePhoto.src;
-      //   console.log(singlePhoto, i);
-      // });
-    });
-    leftArrow.addEventListener("click", () => {
-      imgNew.innerHTML = null;
-      imgNew.src = singlePhoto.src;
-      console.log(singlePhoto);
-    });
+  //On click we add photo's index inside the index variable
+  img.addEventListener("click", () => {
+    photoIndex = i;
+    imgNew.src = singlePhoto.src;
+    body.prepend(photoPopup);
+    imgNew.alt = singlePhoto.alt;
+    body.append(imgClass);
+    imgClass.innerHTML = null;
+    imgClass.append(imgNew);
+    imgClass.prepend(leftArrow, rightArrow);
   });
-  photoPopup.addEventListener("click", () => {
-    rightArrow.remove();
-    leftArrow.remove();
-    photoPopup.remove();
-    imgNew.remove();
-  });
+});
+rightArrow.addEventListener("click", () => {
+  swipeRight();
+});
+leftArrow.addEventListener("click", () => {
+  swipeLeft();
+});
+
+photoPopup.addEventListener("click", () => {
+  remove();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && photoPopup) {
+    remove();
+  }
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight" && photoPopup) {
+    swipeRight();
+  }
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft" && photoPopup) {
+    swipeLeft();
+  }
 });

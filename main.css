@@ -68,6 +68,13 @@ body {
      object-fit: cover;
 }
 
+.main__img__hover {
+  position: absolute;
+  z-index: 5;
+  font-size: 5rem;
+  color: white;
+}
+
 .main__img__popup {
   position: fixed;
   top: 50%;

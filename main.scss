@@ -61,7 +61,12 @@ body {
     width: 100%;
     cursor: pointer;
     object-fit: cover;
-
+    &__hover {
+      position: absolute;
+      z-index: 5;
+      font-size: 5rem;
+      color: white;
+    }
     &__popup {
       position: fixed;
       top: 50%;
